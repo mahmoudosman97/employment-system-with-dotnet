@@ -14,7 +14,7 @@ public class ApplicationController : ControllerBase
         _context = context;
     }
 
-    // 📌 التقديم على وظيفة
+    
     [HttpPost]
     public async Task<IActionResult> Apply([FromBody] Application application)
     {
@@ -41,7 +41,7 @@ public class ApplicationController : ControllerBase
         return Ok(new { message = "Application submitted successfully!" });
     }
 
-    // 📌 البحث عن وظيفة
+    
     [HttpGet("search")]
     public async Task<IActionResult> SearchVacancies([FromQuery] string title)
     {
@@ -52,15 +52,15 @@ public class ApplicationController : ControllerBase
         return Ok(vacancies);
     }
 
-    // 📌 عرض جميع التقديمات لمتقدم معين
+    
    [HttpGet("applicant/{applicantId}")]
 public async Task<IActionResult> GetApplicationsByApplicant(int applicantId)
 {
     var applications = await _context.Applications
         .Where(a => a.ApplicantId == applicantId)
-        .Include(a => a.Vacancy)         // جلب تفاصيل الوظيفة
-            .ThenInclude(v => v.Employer) // جلب تفاصيل صاحب الوظيفة
-        .Include(a => a.Applicant)        // جلب بيانات المتقدم
+        .Include(a => a.Vacancy)         
+            .ThenInclude(v => v.Employer) 
+        .Include(a => a.Applicant)        
         .ToListAsync();
 
     if (!applications.Any())
@@ -70,14 +70,14 @@ public async Task<IActionResult> GetApplicationsByApplicant(int applicantId)
 }
 
 
-    // 📌 عرض جميع المتقدمين لوظيفة معينة
+    
    [HttpGet("vacancy/{vacancyId}")]
 public async Task<IActionResult> GetApplicationsByVacancy(int vacancyId)
 {
     var applications = await _context.Applications
         .Where(a => a.VacancyId == vacancyId)
-        .Include(a => a.Vacancy) // ✅ تحميل بيانات الوظيفة
-        .Include(a => a.Applicant) // ✅ تحميل بيانات المتقدم
+        .Include(a => a.Vacancy) 
+        .Include(a => a.Applicant) 
         .ToListAsync();
 
     if (!applications.Any())

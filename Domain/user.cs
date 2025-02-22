@@ -6,6 +6,6 @@ namespace EmploymentSystem.Domain
         public string FullName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string PasswordHash { get; set; } = string.Empty;
-        public string Role { get; set; } = "Applicant"; // "Employer" أو "Applicant"
+        public string Role { get; set; } = "Applicant"; 
     }
 }

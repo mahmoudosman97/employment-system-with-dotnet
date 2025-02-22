@@ -20,7 +20,7 @@ namespace EmploymentSystem.Controllers
             _cache = cache;
         }
 
-        // ✅ 1️⃣ استرجاع جميع الوظائف مع الكاش
+       
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Vacancy>>> GetAllVacancies()
         {
@@ -29,7 +29,7 @@ namespace EmploymentSystem.Controllers
                 vacancies = await _context.Vacancies.Include(v => v.Employer).ToListAsync();
 
                 var cacheOptions = new MemoryCacheEntryOptions()
-                    .SetAbsoluteExpiration(TimeSpan.FromMinutes(5)); // التخزين لمدة 5 دقائق
+                    .SetAbsoluteExpiration(TimeSpan.FromMinutes(5)); 
 
                 _cache.Set(CacheKey, vacancies, cacheOptions);
             }
@@ -37,7 +37,7 @@ namespace EmploymentSystem.Controllers
             return Ok(vacancies);
         }
 
-        // ✅ 2️⃣ استرجاع وظيفة واحدة مع الكاش
+   
         [HttpGet("{id}")]
         public async Task<ActionResult<Vacancy>> GetVacancyById(int id)
         {
@@ -56,7 +56,7 @@ namespace EmploymentSystem.Controllers
             return Ok(vacancy);
         }
 
-        // ✅ 3️⃣ تغيير حالة الوظيفة مع مسح الكاش
+       
         [HttpPut("{id}/status")]
         public async Task<IActionResult> ToggleVacancyStatus(int id, [FromBody] bool isActive)
         {
@@ -73,7 +73,7 @@ namespace EmploymentSystem.Controllers
             return Ok(new { message = $"Vacancy {(isActive ? "activated" : "deactivated")} successfully!" });
         }
 
-        // ✅ 4️⃣ استرجاع الوظائف المؤرشفة بدون كاش
+      
         [HttpGet("archived")]
         public IActionResult GetArchivedVacancies()
         {
@@ -81,7 +81,7 @@ namespace EmploymentSystem.Controllers
             return Ok(archivedVacancies);
         }
 
-        // ✅ 5️⃣ إضافة وظيفة جديدة مع مسح الكاش
+      
         [HttpPost]
         public async Task<ActionResult<Vacancy>> CreateVacancy([FromBody] Vacancy vacancy)
         {
@@ -100,7 +100,7 @@ namespace EmploymentSystem.Controllers
             return CreatedAtAction(nameof(GetVacancyById), new { id = vacancy.Id }, vacancy);
         }
 
-        // ✅ 6️⃣ تحديث وظيفة مع تحديث الكاش
+      
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateVacancy(int id, [FromBody] Vacancy vacancy)
         {
@@ -127,7 +127,7 @@ namespace EmploymentSystem.Controllers
             return Ok(existingVacancy);
         }
 
-        // ✅ 7️⃣ حذف وظيفة مع مسح الكاش
+      
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVacancy(int id)
         {

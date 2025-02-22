@@ -20,7 +20,6 @@ public class UserController : ControllerBase
         _config = config;
     }
 
-    // ✅ تسجيل مستخدم جديد
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] User user)
     {
@@ -29,7 +28,7 @@ public class UserController : ControllerBase
             return BadRequest(new { message = "Email already exists" });
         }
 
-        user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.PasswordHash); // 🔐 تشفير كلمة المرور
+        user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.PasswordHash);
 
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
@@ -37,7 +36,7 @@ public class UserController : ControllerBase
         return Ok(new { message = "User registered successfully!" });
     }
 
-    // ✅ تسجيل الدخول وإرجاع `JWT Token`
+    
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] User user)
     {
@@ -48,10 +47,10 @@ public class UserController : ControllerBase
             return Unauthorized(new { message = "Invalid credentials" });
         }
 
-        // ✅ إنشاء التوكن
+       
         var token = GenerateJwtToken(existingUser);
 
-        // ✅ طباعة القيم للتأكد من صحتها
+      
         Console.WriteLine("Generated Token: " + token);
         Console.WriteLine("User Role: " + existingUser.Role);
 
@@ -73,7 +72,7 @@ public class UserController : ControllerBase
         
 
 
-    // ✅ دالة لإنشاء `JWT Token`
+    
     private string GenerateJwtToken(User user)
 {
     var secretKey = _config.GetValue<string>("JwtSettings:SecretKey");

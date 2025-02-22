@@ -51,7 +51,7 @@ namespace EmploymentSystem.Services
                     _logger.LogError(ex, "Error while archiving expired vacancies.");
                 }
 
-                // انتظر 24 ساعة قبل تنفيذ الأرشفة مرة أخرى (يمكنك تعديلها)
+               
                 await Task.Delay(TimeSpan.FromHours(24), stoppingToken);
             }
         }

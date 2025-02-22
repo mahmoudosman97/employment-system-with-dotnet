@@ -16,26 +16,26 @@ namespace EmploymentSystem.Persistence
         {
             base.OnModelCreating(modelBuilder);
 
-            // 🔹 تعديل علاقة Vacancy مع Employer لمنع الحذف التلقائي
+           
             modelBuilder.Entity<Vacancy>()
                 .HasOne(v => v.Employer)
                 .WithMany()
                 .HasForeignKey(v => v.EmployerId)
-                .OnDelete(DeleteBehavior.Restrict); // ✅ حل المشكلة
+                .OnDelete(DeleteBehavior.Restrict); 
 
-            // 🔹 تعديل علاقة Application مع Vacancy لمنع الحذف التلقائي
+          
             modelBuilder.Entity<Application>()
                 .HasOne(a => a.Vacancy)
                 .WithMany()
                 .HasForeignKey(a => a.VacancyId)
-                .OnDelete(DeleteBehavior.Restrict); // ✅ حل المشكلة
+                .OnDelete(DeleteBehavior.Restrict);
 
-            // 🔹 تعديل علاقة Application مع Applicant لمنع الحذف التلقائي
+           
             modelBuilder.Entity<Application>()
                 .HasOne(a => a.Applicant)
                 .WithMany()
                 .HasForeignKey(a => a.ApplicantId)
-                .OnDelete(DeleteBehavior.Restrict); // ✅ حل المشكلة
+                .OnDelete(DeleteBehavior.Restrict); 
         }
     }
 }

@@ -9,8 +9,8 @@ namespace EmploymentSystem.Domain
         public DateTime ExpiryDate { get; set; }
         public bool IsActive { get; set; } = true;
         public int EmployerId { get; set; }
-        public bool IsArchived { get; set; } = false; // افتراضيًا الوظيفة غير مؤرشفة
+        public bool IsArchived { get; set; } = false; 
 
-        public User? Employer { get; set; } // جعلها nullable حتى لا تسبب مشاكل
+        public User? Employer { get; set; } 
     }
 }
