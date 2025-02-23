@@ -1,0 +1,402 @@
+{
+	"info": {
+		"_postman_id": "2e454d43-ad65-4fa4-a738-b957e0d6dc3a",
+		"name": "EmploymentSystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32518864"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"Ahmed Ali\",\r\n  \"email\": \"ahmed@example.com\",\r\n  \"passwordHash\": \"123456\",\r\n  \"role\": \"Applicant\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5215/api/User/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5215",
+							"path": [
+								"api",
+								"User",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"Ahmed Ali\",\r\n  \"email\": \"ahmed@example.com\",\r\n  \"passwordHash\": \"123456\",\r\n  \"role\": \"Applicant\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5215/api/User/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5215",
+							"path": [
+								"api",
+								"User",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vacancy",
+			"item": [
+				{
+					"name": "List of vacancy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5215/api/Vacancy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5215",
+							"path": [
+								"api",
+								"Vacancy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "archived",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5215/api/Vacancy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5215",
+							"path": [
+								"api",
+								"Vacancy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get vacancy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5215/api/Vacancy/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5215",
+							"path": [
+								"api",
+								"Vacancy",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Vacancy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Software Engineer\",\r\n    \"description\": \"Looking for a skilled .NET developer.\",\r\n    \"maxApplications\": 10,\r\n    \"expiryDate\": \"2025-03-01T00:00:00Z\",\r\n    \"isActive\": true,\r\n    \"employerId\": 2\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5215/api/Vacancy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5215",
+							"path": [
+								"api",
+								"Vacancy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "true",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5215/api/Vacancy/1/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5215",
+							"path": [
+								"api",
+								"Vacancy",
+								"1",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Vacancy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"title\": \"Senior Software Engineer\",\r\n    \"description\": \"Updated job description\",\r\n    \"expiryDate\": \"2025-12-31T00:00:00\",\r\n    \"maxApplications\": 10,\r\n    \"isActive\": true,\r\n    \"employerId\": 2\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5215/api/Vacancy/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5215",
+							"path": [
+								"api",
+								"Vacancy",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Vacancy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Software Engineer\",\r\n    \"description\": \"Looking for a skilled .NET developer.\",\r\n    \"maxApplications\": 10,\r\n    \"expiryDate\": \"2025-03-01T00:00:00Z\",\r\n    \"isActive\": true,\r\n    \"employerId\": 2\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5215/api/Vacancy/1002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5215",
+							"path": [
+								"api",
+								"Vacancy",
+								"1002"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Applications",
+			"item": [
+				{
+					"name": "apply",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vacancyId\": 1004,\r\n    \"applicantId\": 2\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5215/api/application",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5215",
+							"path": [
+								"api",
+								"application"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vacancyId\": 1004,\r\n    \"applicantId\": 2\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5215/api/application/search?title=backend",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5215",
+							"path": [
+								"api",
+								"application",
+								"search"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "backend"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetApplicationsByApplicant",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5215/api/application/applicant/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5215",
+							"path": [
+								"api",
+								"application",
+								"applicant",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetApplicationsByVacancy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5215/api/application/vacancy/1004",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5215",
+							"path": [
+								"api",
+								"application",
+								"vacancy",
+								"1004"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
